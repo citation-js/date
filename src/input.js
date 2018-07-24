@@ -345,9 +345,4 @@ const parseDate = function (value) {
   }
 }
 
-export const scope = '@date'
-export const types = '@date'
-export {
-  parseDate as parse,
-  parseDate as default
-}
+export default parseDate
