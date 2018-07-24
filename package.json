@@ -1,3 +1,53 @@
 {
-  "version": "0.4.0-9"
+  "name": "@citation-js/date",
+  "version": "0.4.0-9",
+  "description": "Date parser and formatter",
+  "main": "lib/index.js",
+  "author": "Lars Willighagen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/citation-js/date/issues"
+  },
+  "homepage": "https://github.com/citation-js/date#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/citation-js/date.git"
+  },
+  "files": [
+    "/lib"
+  ],
+  "nyc": {
+    "include": [
+      "src/**/*.js"
+    ],
+    "sourceMap": false,
+    "instrument": false
+  },
+  "standard": {
+    "parser": "babel-eslint"
+  },
+  "scripts": {
+    "test": "mocha -r @babel/register -R spec test/suite.js",
+    "babel": "babel src -d lib --copy-files",
+    "lint": "standard \"src/**/*.js\" \"test/**/*.js\"",
+    "coverage": "nyc npm test",
+    "report": "nyc report --reporter=lcov > coverage.lcov",
+    "prepublishOnly": "npm run babel",
+    "preversion": "npm run lint && npm run test"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.0.0-beta.54"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.54",
+    "@babel/core": "^7.0.0-beta.54",
+    "@babel/preset-env": "^7.0.0-beta.54",
+    "@babel/register": "^7.0.0-beta.54",
+    "babel-eslint": "^8.2.6",
+    "babel-plugin-istanbul": "^4.1.6",
+    "generate-changelog": "^1.7.1",
+    "mocha": "^5.2.0",
+    "nyc": "^12.0.2",
+    "standard": "^11.0.1"
+  }
 }
