@@ -1,13 +1,13 @@
 ## Install
 
 ```js
-npm install @citation-js/name
+npm install @citation-js/date
 ```
 
 ## Use
 
 ```js
-let {parse, format} = require('@citation-js/name')
+let {parse, format} = require('@citation-js/date')
 
 parse('First Last')
 // { given: 'First', family: 'Last' }
@@ -18,21 +18,18 @@ format({ given: 'First', family: 'Last' })
 
 ### API
 
-**`parse(String name) -> Object`**
+**`parse(String date) -> Object`**
 
-* `String name`: Any name
+* `String date`: Any date
 
-**`format(Object name[, Boolean reversed]) -> String`**
+**`format(Object date[, String delimiter = '-']) -> String`**
 
-* `Object name`: Any name
-* `Boolean reversed`: Format as `Last, First` instead of `First Last`
+* `Object date`: Any date
+* `String delimiter`: Separate parts by delimiter
 
 ---
 
-Here, `Object` (CSL-JSON author format) has the following properties:
+Here, `Object` (CSL-JSON author format) can have the following properties:
 
-* `given`
-* `family`
-* `suffix`
-* `dropping-particle`
-* `non-dropping-particle`
+* `date-parts`: array with one or two dates, each date being an array of [year, month, day], the last two parts being optional
+* `raw`: raw date
