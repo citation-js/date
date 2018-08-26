@@ -1,3 +1,10 @@
+#### 0.4.1 (2018-08-26)
+
+##### Chores
+
+* **npm:**  update dependencies ([23c0c835](https://github.com/citation-js/date/commit/23c0c8353ffbd4990b942d77d587c733cf8a1514))
+* ***:**  require node 6 ([55e09d8c](https://github.com/citation-js/date/commit/55e09d8cb004237bd09c6062905f3ef2c1ccc401))
+
 ### 0.4.0 (2018-07-24)
 
 ##### Chores
