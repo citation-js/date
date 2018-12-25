@@ -9,7 +9,7 @@
  *
  * @return {String} The string
  */
-const getDate = function ({'date-parts': [date]}, delimiter = '-') {
+const getDate = function ({ 'date-parts': [date] }, delimiter = '-') {
   let dateParts = date.map(part => part.toString())
 
   switch (dateParts.length) {

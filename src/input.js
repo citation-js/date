@@ -339,9 +339,9 @@ const parseDate = function (value) {
 
   if (dateParts) {
     dateParts = dateParts.map(string => parseInt(string))
-    return {'date-parts': [dateParts]}
+    return { 'date-parts': [dateParts] }
   } else {
-    return {raw: value}
+    return { raw: value }
   }
 }
 
