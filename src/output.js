@@ -16,8 +16,12 @@ function padStart (str, len, chr) {
  *
  * @return {String} The string
  */
-const getDate = function ({ 'date-parts': [date] }, delimiter = '-') {
-  let dateParts = date.map(part => part.toString())
+const getDate = function (date, delimiter = '-') {
+  if (!date['date-parts']) {
+    return date.raw
+  }
+
+  let dateParts = date['date-parts'][0].map(part => part.toString())
 
   switch (dateParts.length) {
     case 3: // Day
