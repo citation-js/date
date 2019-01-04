@@ -5,15 +5,15 @@ import { format } from '../src/'
 
 describe('formatter', function () {
   it('with nothing', function () {
-    assert.strictEqual(format({'date-parts': [[2000, 10, 10]]}), '2000-10-10')
+    assert.strictEqual(format({ 'date-parts': [[2000, 10, 10]] }), '2000-10-10')
   })
   it('with narrow parts', function () {
-    assert.strictEqual(format({'date-parts': [[1, 1, 1]]}), '0001-01-01')
+    assert.strictEqual(format({ 'date-parts': [[1, 1, 1]] }), '0001-01-01')
   })
   it('with delimiter', function () {
-    assert.strictEqual(format({'date-parts': [[2000, 10, 10]]}, '='), '2000=10=10')
+    assert.strictEqual(format({ 'date-parts': [[2000, 10, 10]] }, '='), '2000=10=10')
   })
   it('with raw date', function () {
-    assert.strictEqual(format({'raw': 'foo'}), 'foo')
+    assert.strictEqual(format({ 'raw': 'foo' }), 'foo')
   })
 })
