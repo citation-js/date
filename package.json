@@ -1,6 +1,6 @@
 {
   "name": "@citation-js/date",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "Date parser and formatter",
   "main": "lib/index.js",
   "author": "Lars Willighagen",
