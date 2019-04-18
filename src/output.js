@@ -1,4 +1,7 @@
 function padStart (str, len, chr) {
+  if (str.length >= len) {
+    return str
+  }
   while (str.length < len) {
     str = chr + str
   }
