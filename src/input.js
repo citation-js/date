@@ -68,7 +68,9 @@ const parseEpoch = function (date) {
  * Get date parts from ISO-8601 time. Formats supported:
  *
  *   * YYYY-MM-DD
+ *   * YYYY-MM
  *   * [+-]YYYYYY[Y...]-MM-DD
+ *   * [+-]YYYYYY[Y...]-MM
  *
  * Time parts are supported but disregarded.
  *
@@ -80,13 +82,13 @@ const parseEpoch = function (date) {
  * @return {null} else null
  */
 const parseIso8601 = function (date) {
-  const pattern = /^(\d{4}|[-+]\d{6,})-(\d{2})-(\d{2})/
+  const pattern = /^(\d{4}|[-+]\d{6,})-(\d{2})(-(\d{2}))?/
 
   if (typeof date !== 'string' || !pattern.test(date)) {
     return null
   }
 
-  let [, year, month, day] = date.match(pattern)
+  let [, year, month, , day] = date.match(pattern)
 
   if (!+month) {
     return [year]

@@ -108,6 +108,7 @@ describe('parser', function () {
         expect(parse('January 2000')).to.eql({ 'date-parts': [[2000, 1]] })
         expect(parse('Jan -2000')).to.eql({ 'date-parts': [[-2000, 1]] })
         expect(parse('-2000 Jan')).to.eql({ 'date-parts': [[-2000, 1]] })
+        expect(parse('2000-01')).to.eql({ 'date-parts': [[2000, 1]] })
       })
       it('works when both values are numbers', function () {
         expect(parse('1 2000')).to.eql({ 'date-parts': [[2000, 1]] })
