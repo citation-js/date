@@ -58,7 +58,7 @@ Generally, formats support trailing parts, which are disregarded.
 
 ---
 
-Here, `Object` (CSL-JSON author format) can have the following properties:
+Here, `Object date` (CSL-JSON date format) can have the following properties:
 
 * `date-parts`: array with one or two dates, each date being an array of [year, month, day], the last two parts being optional
 * `raw`: raw date
