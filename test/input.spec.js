@@ -19,6 +19,9 @@ describe('parser', function () {
       expect(parse('2000-01-01')).to.eql({ 'date-parts': [[2000, 1, 1]] })
       expect(parse('9999-01-01')).to.eql({ 'date-parts': [[9999, 1, 1]] })
     })
+    it('works for dates without day', function () {
+      expect(parse('2000-01')).to.eql({ 'date-parts': [[2000, 1]] })
+    })
     it('works for long dates', function () {
       expect(parse('000000-01-01')).to.eql({ 'date-parts': [[0, 1, 1]] })
       expect(parse('002000-01-01')).to.eql({ 'date-parts': [[2000, 1, 1]] })
