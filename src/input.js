@@ -39,10 +39,11 @@ const monthMap = {
  * @memberof Cite.parse.date
  *
  * @param {String} monthName - Name of the given month (in English), or abbreviations
- * @return {Number} month index
- * @return {undefined}
+ * @return {Number|undefined} month index
  */
-const getMonth = monthName => monthMap[monthName.toLowerCase().slice(0, 3)]
+function getMonth (monthName) {
+  return monthMap[monthName.toLowerCase().slice(0, 3)]
+}
 
 /**
  * Get date parts from epoch time
@@ -54,7 +55,7 @@ const getMonth = monthName => monthMap[monthName.toLowerCase().slice(0, 3)]
  * @return {Cite.parse.date~dateParts} if valid epoch time
  * @return {null} else null
  */
-const parseEpoch = function (date) {
+function parseEpoch (date) {
   let epoch = new Date(date)
 
   if (typeof date === 'number' && !isNaN(epoch.valueOf())) {
@@ -149,7 +150,7 @@ const parseRfc2822 = function (date) {
  * @return {Cite.parse.date~dateParts} if valid day time
  * @return {null} else null
  */
-const parseAmericanDay = function (date) {
+function parseAmericanDay (date) {
   const pattern = /^(\d{1,2})\/(\d{1,2})\/(\d{2}(?:\d{2})?)/
 
   if (typeof date !== 'string' || !pattern.test(date)) {
@@ -192,7 +193,7 @@ const parseAmericanDay = function (date) {
  * @return {Cite.parse.date~dateParts} if valid day time
  * @return {null} else null
  */
-const parseDay = function (date) {
+function parseDay (date) {
   const pattern = /^(\d{1,2})[ .\-/](\d{1,2}|[a-z]{3,10})[ .\-/](-?\d+)/i
   const reversePattern = /^(-?\d+)[ .\-/](\d{1,2}|[a-z]{3,10})[ .\-/](\d{1,2})/i
 
@@ -244,7 +245,7 @@ const parseDay = function (date) {
  * @return {Cite.parse.date~dateParts} if valid month time
  * @return {null} else null
  */
-const parseMonth = function (date) {
+function parseMonth (date) {
   const pattern = /^([a-z]{3,10}|-?\d+)[^\w-]+([a-z]{3,10}|-?\d+)$/i
   if (typeof date === 'string' && pattern.test(date)) {
     let values = date.match(pattern).slice(1, 3)
@@ -286,7 +287,7 @@ const parseMonth = function (date) {
  * @return {Cite.parse.date~dateParts} if valid year time
  * @return {null} else null
  */
-const parseYear = function (date) {
+function parseYear (date) {
   if (typeof date === 'string' && /^-?\d+$/.test(date)) {
     return [date]
   } else {
@@ -295,7 +296,7 @@ const parseYear = function (date) {
 }
 
 /**
- * Convert date to CSL date. Supported formats:
+ * Extract date parts (year, month, day) from text. Supported formats:
  *
  *   * Epoch time (in number form)
  *   * `YYYY-MM-DD`
