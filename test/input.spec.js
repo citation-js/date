@@ -140,6 +140,27 @@ describe('parser', function () {
       })
     })
   })
+  describe('date range', function () {
+    it('works with two arguments', function () {
+      compare(['2000-01-02', '4 mar 2001'], { 'date-parts': [[2000, 1, 2], [2001, 3, 4]] })
+    })
+    it('works with delimiter', function () {
+      compare('2000-01-02–2001-03-04', { 'date-parts': [[2000, 1, 2], [2001, 3, 4]] })
+      compare('2000-01-02—2001-03-04', { 'date-parts': [[2000, 1, 2], [2001, 3, 4]] })
+      compare('2000-01-02--2001-03-04', { 'date-parts': [[2000, 1, 2], [2001, 3, 4]] })
+    })
+    it('works with spaced delimiter', function () {
+      compare('2000-01-02 to 2001-03-04', { 'date-parts': [[2000, 1, 2], [2001, 3, 4]] })
+      compare('2000-01-02 - 2001-03-04', { 'date-parts': [[2000, 1, 2], [2001, 3, 4]] })
+      compare('2000-01-02 – 2001-03-04', { 'date-parts': [[2000, 1, 2], [2001, 3, 4]] })
+      compare('2000-01-02 — 2001-03-04', { 'date-parts': [[2000, 1, 2], [2001, 3, 4]] })
+      compare('2000-01-02 / 2001-03-04', { 'date-parts': [[2000, 1, 2], [2001, 3, 4]] })
+      compare('2000-01-02 -- 2001-03-04', { 'date-parts': [[2000, 1, 2], [2001, 3, 4]] })
+    })
+    it('works with special delimiter', function () {
+      compare('2000-01-02/2001-03-04', { 'date-parts': [[2000, 1, 2], [2001, 3, 4]] })
+    })
+  })
   describe('invalid time', function () {
     it('works for non-strings and non-numbers', function () {
       compare(undefined, { raw: undefined })

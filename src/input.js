@@ -33,6 +33,18 @@ const monthMap = {
 }
 
 /**
+ * Date range delimiters:
+ *
+ *  - with spaces: " to ", " / ", " - "
+ *  - without spaces: "YYYY-MM-DD/YYYY-MM-DD" (limited to avoid conflicts w/ YYYY/YYYY and YYYY/MM)
+ *  - optional spaces: "--", "–", "—" (no conflict as they are not date part separators)
+ *
+ * @access private
+ * @memberof Cite.parse.date
+ */
+const dateRangeDelimiters = / (?:to|[-/]) | ?(?:--|[–—]) ?|(?<=\d{4}-\d{2}-\d{2})\/(?=\d{4}-\d{2}-\d{2})/
+
+/**
  * Get month index from month name
  *
  * @access private
@@ -323,15 +335,14 @@ function parseYear (date) {
  *   4. This format is only assumed if the year is bigger than the month
  *   5. This format doesn't support trailing parts
  *
- * @access protected
- * @memberof Cite.parse
+ * @access private
+ * @memberof Cite.parse.date
  *
  * @param {Number|String} value - date in supported format, see above
  *
- * @return {Object} Object with property "date-parts" with the value [[ YYYY, MM, DD ]]
- * @return {Object} If unparsable, object with property "raw" with the inputted value
+ * @return {Array<Number>}
  */
-const parseDate = function (value) {
+function parseDateParts (value) {
   let dateParts = parseEpoch(value) ||
                   parseIso8601(value) ||
                   parseRfc2822(value) ||
@@ -340,11 +351,39 @@ const parseDate = function (value) {
                   parseMonth(value) ||
                   parseYear(value)
 
-  if (dateParts) {
-    dateParts = dateParts.map(string => parseInt(string))
-    return { 'date-parts': [dateParts] }
+  return dateParts && dateParts.map(string => parseInt(string))
+}
+
+/**
+ * Convert date to CSL date.
+ *
+ * @access protected
+ * @memberof Cite.parse
+ *
+ * @param {Number|String} rangeStart - point in time, start of date range or date range delimited by hyphens/'to'/forward slash
+ * @param {Number|String} [rangeEnd]
+ *
+ * @return {Object} Object with property "date-parts" with the value [[ YYYY, MM, DD ]]
+ * @return {Object} If unparsable, object with property "raw" with the inputted value
+ */
+function parseDate (rangeStart, rangeEnd) {
+  const range = []
+  const rangeStartAsRange = typeof rangeStart === 'string' && rangeStart.split(dateRangeDelimiters)
+
+  if (rangeEnd) {
+    range.push(rangeStart, rangeEnd)
+  } else if (rangeStartAsRange && rangeStartAsRange.length === 2) {
+    range.push(...rangeStartAsRange)
   } else {
-    return { raw: value }
+    range.push(rangeStart)
+  }
+
+  const dateParts = range.map(parseDateParts)
+
+  if (dateParts.filter(Boolean).length === range.length) {
+    return { 'date-parts': dateParts }
+  } else {
+    return { raw: rangeEnd ? range.join('/') : rangeStart }
   }
 }
 
