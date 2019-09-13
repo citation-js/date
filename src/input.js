@@ -300,7 +300,16 @@ function parseMonth (date) {
  * @return {null} else null
  */
 function parseYear (date) {
-  if (typeof date === 'string' && /^-?\d+$/.test(date)) {
+  if (typeof date !== 'string') {
+    return null
+  }
+
+  const adBc = date.match(/^(\d+) ?(a\.?d\.?|b\.?c\.?)$/i)
+
+  if (adBc) {
+    const [date, suffix] = adBc.slice(1)
+    return [date * (suffix.toLowerCase()[0] === 'a' ? 1 : -1)]
+  } else if (/^-?\d+$/.test(date)) {
     return [date]
   } else {
     return null
@@ -340,7 +349,7 @@ function parseYear (date) {
  *
  * @param {Number|String} value - date in supported format, see above
  *
- * @return {Array<Number>}
+ * @return {Cite.parse.date~dateParts}
  */
 function parseDateParts (value) {
   let dateParts = parseEpoch(value) ||

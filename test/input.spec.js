@@ -138,6 +138,15 @@ describe('parser', function () {
         compare('2000', { 'date-parts': [[2000]] })
         compare('-2000', { 'date-parts': [[-2000]] })
       })
+      it('works for AD/BC', function () {
+        compare('2000 a.d.', { 'date-parts': [[2000]] })
+        compare('2000 b.c.', { 'date-parts': [[-2000]] })
+        compare('2000AD', { 'date-parts': [[2000]] })
+        compare('2000BC', { 'date-parts': [[-2000]] })
+      })
+      it('does not work for AD/BC and negative year', function () {
+        compare('-2000 BC', { raw: '-2000 BC' })
+      })
     })
   })
   describe('date range', function () {
