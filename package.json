@@ -14,7 +14,7 @@
     "url": "git+https://github.com/citation-js/date.git"
   },
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=10.0.0"
   },
   "files": [
     "/lib"
@@ -32,25 +32,23 @@
   "scripts": {
     "test": "mocha -r @babel/register -R spec test/*.spec.js",
     "babel": "babel src -d lib --copy-files",
-    "lint": "standard \"src/**/*.js\" \"test/**/*.js\"",
-    "coverage": "cross-env NODE_ENV=test nyc npm test",
-    "report": "nyc report --reporter=lcov > coverage.lcov",
+    "lint": "standard",
+    "coverage": "NODE_ENV=test nyc npm test",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md",
+    "version": "npm run changelog",
     "prepublishOnly": "npm run babel",
     "preversion": "npm run lint && npm run test"
   },
-  "dependencies": {},
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.2.3",
     "@babel/register": "^7.0.0",
     "babel-eslint": "^10.0.1",
-    "babel-plugin-istanbul": "^5.1.0",
-    "cross-env": "^5.2.0",
-    "expect.js": "^0.3.1",
-    "generate-changelog": "^1.7.1",
-    "mocha": "^5.2.0",
-    "nyc": "^13.1.0",
-    "standard": "^12.0.1"
+    "babel-plugin-istanbul": "^6.0.0",
+    "conventional-changelog-cli": "^2.1.1",
+    "mocha": "^8.4.0",
+    "nyc": "^15.1.0",
+    "standard": "^16.0.3"
   }
 }
