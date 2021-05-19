@@ -175,8 +175,8 @@ describe('parser', function () {
       compare(undefined, { raw: undefined })
     })
     it('works for invalid month names', function () {
-      let inputs = ['2000 naj 1', '1 naj 2000', 'naj 2000', '2000 naj']
-      for (let input of inputs) {
+      const inputs = ['2000 naj 1', '1 naj 2000', 'naj 2000', '2000 naj']
+      for (const input of inputs) {
         compare(input, { raw: input })
       }
     })

@@ -68,7 +68,7 @@ function getMonth (monthName) {
  * @return {null} else null
  */
 function parseEpoch (date) {
-  let epoch = new Date(date)
+  const epoch = new Date(date)
 
   if (typeof date === 'number' && !isNaN(epoch.valueOf())) {
     return [epoch.getFullYear(), epoch.getMonth() + 1, epoch.getDate()]
@@ -101,7 +101,7 @@ const parseIso8601 = function (date) {
     return null
   }
 
-  let [, year, month, day] = date.match(pattern)
+  const [, year, month, day] = date.match(pattern)
 
   if (!+month) {
     return [year]
@@ -169,9 +169,9 @@ function parseAmericanDay (date) {
     return null
   }
 
-  let [, month, day, year] = date.match(pattern)
+  const [, month, day, year] = date.match(pattern)
 
-  let check = new Date(year, month, day)
+  const check = new Date(year, month, day)
   if (check.getMonth() === parseInt(month)) {
     return [year, month, day]
   } else {
@@ -260,7 +260,7 @@ function parseDay (date) {
 function parseMonth (date) {
   const pattern = /^([a-z]{3,10}|-?\d+)[^\w-]+([a-z]{3,10}|-?\d+)$/i
   if (typeof date === 'string' && pattern.test(date)) {
-    let values = date.match(pattern).slice(1, 3)
+    const values = date.match(pattern).slice(1, 3)
 
     let month
     if (getMonth(values[1])) {
@@ -277,7 +277,7 @@ function parseMonth (date) {
       month = values.shift()
     }
 
-    let year = values.pop()
+    const year = values.pop()
 
     return [year, month]
   } else {
@@ -352,7 +352,7 @@ function parseYear (date) {
  * @return {Cite.parse.date~dateParts}
  */
 function parseDateParts (value) {
-  let dateParts = parseEpoch(value) ||
+  const dateParts = parseEpoch(value) ||
                   parseIso8601(value) ||
                   parseRfc2822(value) ||
                   parseAmericanDay(value) ||

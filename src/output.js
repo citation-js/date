@@ -24,7 +24,7 @@ const getDate = function (date, delimiter = '-') {
     return date.raw
   }
 
-  let dateParts = date['date-parts'][0].map(part => part.toString())
+  const dateParts = date['date-parts'][0].map(part => part.toString())
 
   switch (dateParts.length) {
     case 3: // Day

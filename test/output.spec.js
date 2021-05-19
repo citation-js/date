@@ -14,7 +14,7 @@ describe('formatter', function () {
     assert.strictEqual(format({ 'date-parts': [[2000, 10, 10]] }, '='), '2000=10=10')
   })
   it('with raw date', function () {
-    assert.strictEqual(format({ 'raw': 'foo' }), 'foo')
+    assert.strictEqual(format({ raw: 'foo' }), 'foo')
   })
   it('without day', function () {
     assert.strictEqual(format({ 'date-parts': [[2000, 10]] }), '2000-10')
