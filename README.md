@@ -47,14 +47,16 @@ Generally, formats support trailing parts, which are disregarded.
 
 ### API
 
-**`parse(String date) -> Object`**
+**`parse(String date[, String endDate]) -> Object`**
 
 * `String date`: Any date
+* `String endDate` <sup>optional</sup>: Any date; when added, the first parameter is treated as the
+  start date of the range.
 
 **`format(Object date[, String delimiter = '-']) -> String`**
 
 * `Object date`: Any date
-* `String delimiter`: Separate parts by delimiter
+* `String delimiter` <sup>optional</sup>: Separate parts by delimiter
 
 ---
 
