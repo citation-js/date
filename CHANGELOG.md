@@ -1,45 +1,56 @@
-#### 0.4.3
+# [0.5.0](https://github.com/citation-js/date/compare/v0.4.4...v0.5.0) (2021-05-19)
 
-##### Fixes
 
-* **output:**
-  * adapt for node 6
-  * support raw dates
+### chore
 
-##### Tests
+* update dependencies ([c5a9b58](https://github.com/citation-js/date/commit/c5a9b58dd226af821bf670bc52a7efbf2c64b5ed))
 
-* **output:**  test formatter
 
-#### 0.4.2 (2018-12-25)
+### Features
 
-* **npm:** update dependencies
+* **input:** support AD/BC ([70e8516](https://github.com/citation-js/date/commit/70e85162dabcd13311540de11d3f51a5ea480ef4))
+* **input:** support date ranges ([230dc0b](https://github.com/citation-js/date/commit/230dc0b057606de20202d932a315f2841472cb33)), closes [#2](https://github.com/citation-js/date/issues/2)
 
-#### 0.4.1 (2018-08-26)
 
-##### Chores
+### BREAKING CHANGES
 
-* **npm:**  update dependencies ([23c0c835](https://github.com/citation-js/date/commit/23c0c8353ffbd4990b942d77d587c733cf8a1514))
-* **\*:**  require node 6 ([55e09d8c](https://github.com/citation-js/date/commit/55e09d8cb004237bd09c6062905f3ef2c1ccc401))
+* support for Node 6 and 8 dropped
 
-#### 0.4.0 (2018-07-24)
 
-##### Chores
 
-* **ci:**
-  *  fix coverage ([72077cdb](https://github.com/citation-js/date/commit/72077cdb8a6dd11009abf9aa113f587e0c4f5f2e))
-  *  setup travis-ci ([93b574af](https://github.com/citation-js/date/commit/93b574af2fd6f7c5e8f74aef571b97b15a75b11e))
-* **\*:**
-  *  create index file ([81df1f85](https://github.com/citation-js/date/commit/81df1f85215cf9bbc7853603650641019f80e678))
-  *  move files ([510da9c7](https://github.com/citation-js/date/commit/510da9c74a5b7bd8c301f64794793108bdad476f))
-* **git:**  create gitignore ([bc442f12](https://github.com/citation-js/date/commit/bc442f1251d48f080b6140a9f88f4242cda8cddb))
-* **npm:**  setup package ([1bfa87bc](https://github.com/citation-js/date/commit/1bfa87bcac3e4eafa1670530d348534a1084d394))
+## [0.4.4](https://github.com/citation-js/date/compare/v0.4.3...v0.4.4) (2019-04-26)
 
-##### Documentation Changes
 
-* **readme:**
-  *  change refs to this package ([5c156dce](https://github.com/citation-js/date/commit/5c156dce5247539a2df4f7f28eb2d32709f26126))
-  *  create readme ([c8e7438a](https://github.com/citation-js/date/commit/c8e7438af417b40029149b51e5003d9bc79325e8))
+### Bug Fixes
 
-##### Tests
+* **input:** support ISO-8601 time w/o day ([10181fc](https://github.com/citation-js/date/commit/10181fc82fb27ef4530a95ee29292f32ca40c3da))
+* **output:** support long years ([dae2412](https://github.com/citation-js/date/commit/dae2412e4abe5c417bc04f9d8380edfebdfe94ed))
 
-* **input:**  setup parsing tests ([ecce8954](https://github.com/citation-js/date/commit/ecce89542a7e2eb1075aa6ee1eddbe07a0d7548f))
+
+
+## [0.4.3](https://github.com/citation-js/date/compare/v0.4.2...v0.4.3) (2019-01-04)
+
+
+### Bug Fixes
+
+* **output:** Node 6 ([5eaa503](https://github.com/citation-js/date/commit/5eaa50375b4187de556e0f0177810bd27e39c714))
+* **output:** raw dates ([bd40e57](https://github.com/citation-js/date/commit/bd40e570481c724ab8b832ea78ad8aeeb2246fd9))
+
+
+
+## [0.4.2](https://github.com/citation-js/date/compare/v0.4.1...v0.4.2) (2018-12-25)
+
+
+
+## [0.4.1](https://github.com/citation-js/date/compare/v0.4.0...v0.4.1) (2018-08-26)
+
+
+
+# [0.4.0](https://github.com/citation-js/date/compare/v0.4.0-9...v0.4.0) (2018-07-24)
+
+
+
+# 0.4.0-9 (2018-07-24)
+
+
+
