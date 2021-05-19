@@ -7,7 +7,7 @@ npm install @citation-js/date
 ## Use
 
 ```js
-let {parse, format} = require('@citation-js/date')
+let { parse, format } = require('@citation-js/date')
 
 parse('2000-12-31')
 // { 'date-parts': [[2000, 12, 31]] }
