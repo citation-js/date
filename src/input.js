@@ -42,7 +42,10 @@ const monthMap = {
  * @access private
  * @memberof Cite.parse.date
  */
-const dateRangeDelimiters = / (?:to|[-/]) | ?(?:--|[–—]) ?|(?<=\d{4}-\d{2}-\d{2})\/(?=\d{4}-\d{2}-\d{2})/
+// Add back when Safari supports lookbehind:
+// const dateRangeDelimiters = / (?:to|[-/]) | ?(?:--|[–—]) ?|(?<=\d{4}-\d{2}-\d{2})\/(?=\d{4}-\d{2}-\d{2})/
+const dateRangeDelimiters = / (?:to|[-/]) | ?(?:--|[–—]) ?/
+const dateRangePattern = /^(\d{4}-\d{2}-\d{2})\/(\d{4}-\d{2}-\d{2})$/
 
 /**
  * Get month index from month name
@@ -364,6 +367,21 @@ function parseDateParts (value) {
 }
 
 /**
+ * @access private
+ *
+ * @param {String} range
+ *
+ * @return {Array<String>} parts
+ */
+function splitDateRange (range) {
+  if (dateRangePattern.test(range)) {
+    return range.match(dateRangePattern).slice(1, 3)
+  } else {
+    return range.split(dateRangeDelimiters)
+  }
+}
+
+/**
  * Convert date to CSL date.
  *
  * @access protected
@@ -377,7 +395,7 @@ function parseDateParts (value) {
  */
 function parseDate (rangeStart, rangeEnd) {
   const range = []
-  const rangeStartAsRange = typeof rangeStart === 'string' && rangeStart.split(dateRangeDelimiters)
+  const rangeStartAsRange = typeof rangeStart === 'string' && splitDateRange(rangeStart)
 
   if (rangeEnd) {
     range.push(rangeStart, rangeEnd)
