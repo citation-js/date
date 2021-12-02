@@ -1,3 +1,12 @@
+## [0.5.1](https://github.com/citation-js/date/compare/v0.5.0...v0.5.1) (2021-12-02)
+
+
+### Bug Fixes
+
+* avoid regular expressions with lookbehinds ([f36f499](https://github.com/citation-js/date/commit/f36f499dbcb82b86856d4c64f190b683ece3d815))
+
+
+
 # [0.5.0](https://github.com/citation-js/date/compare/v0.4.4...v0.5.0) (2021-05-19)
 
 
